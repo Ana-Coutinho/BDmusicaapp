@@ -1,6 +1,8 @@
 # BDmusicaapp
+Exercícios de PostgreSQL
 
-# Exercício 1
+# Parte I
+### 1 . Crie uma tabela de músicas
 ```
 CREATE TABLE IF NOT EXISTS musicas (
 id UUID PRIMARY KEY NOT NULL DEFAULT gen_random_uuid() ,
@@ -15,7 +17,7 @@ genre VARCHAR(55) NOT NULL,
 )
 ```
 
-# Exercício 2
+### 2 . Crie uma tabela de músicos
 ```
 CREATE TABLE IF NOT EXISTS musicos (
 id UUID PRIMARY KEY NOT NULL DEFAULT gen_random_uuid() ,
@@ -34,7 +36,7 @@ CREATE TYPE role as ENUM (
 )
 ```
 
-# Exercício 3
+### 3 . Crie uma tabela de usuários
 ```
 CREATE TABLE IF NOT EXISTS usuarios (
 id UUID PRIMARY KEY NOT NULL DEFAULT gen_random_uuid(),
@@ -56,7 +58,7 @@ CREATE TYPE planos AS ENUM (
 )
 ```
 
-# Exercício 4
+### 4 . Faça as relações necessárias
 ```
 singer(VARCHAR55) NOT NULL => singer VARCHAR(55) NOT NULL REFERENCES musicos(id),
 ```
@@ -66,8 +68,8 @@ composer VARCHAR(55) NOT NULL => composer VARCHAR(55) NOT NULL REFERENCES musico
 ```
 most_known_song UUID  => most_known_song UUID REFERENCES musicas(id),
 ```
-# Exercício 5
-## Musicas
+#  Parte II
+### Seeders da tabela músicas
 ```
 INSERT INTO musicas (song_name, song_path, song_duration, song_date, singer, genre) VALUES
 ('mypc/user/localfiles/songs',
@@ -100,7 +102,7 @@ INSERT INTO musicas (song_name, song_path, song_duration, song_date, singer, com
 'Indie',
 )
 ```
-## Artistas
+### Seeders da tabela músicos
 ```
 INSERT INTO musicos (specification, name, date_of_birth, type, biography) VALUES ( 'singer',
 'Lovejoy',
@@ -145,7 +147,7 @@ INSERT INTO musicos (specification, name, date_of_birth, type, biography) VALUES
 'Renowned German composer and musician',
 )
 ```
-## Usuarios
+### Seeders da tabela usuários
 ```
 INSERT INTO usuarios (email, password, full_name, age, prefered_genre, creation_date, last_access, plan) VALUES ('johndoe@gmail.com',
 'john123doe',
